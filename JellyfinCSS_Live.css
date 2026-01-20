@@ -20,7 +20,8 @@
   --secondary-background-transparent: rgba(0,0,0,0.6);
   --primary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 1.0);
   --secondary-accent-color: #00a4dc20;
-  --Jellyfin-background: url("https://wallpaperaccess.com/full/2311702.jpg");
+  --Jellyfin-background: url("https://raw.githubusercontent.com/Chloee001/JellyFinCSS/refs/heads/Master/BG1%20-%20Inverted.jpeg");
+  --Jellyfin-background-login: url("https://raw.githubusercontent.com/Chloee001/JellyFinCSS/refs/heads/Master/login.jpg");
 }
 
 /* Global Styles */
@@ -264,6 +265,7 @@ html.preload.layout-desktop {
   left: 0%;
   position: fixed;
   width: 100vw;
+  background-attachment: fixed; /* The key property to fix the image */
 }
 
 #reactRoot:has(.skinHeader.semiTransparent) > .backgroundContainer.withBackdrop,
@@ -277,6 +279,7 @@ html.preload.layout-desktop {
   margin-left: 0%;
   position: fixed;
   width: 100vw;
+  background-attachment: fixed; /* The key property to fix the image */
 }
 
 
@@ -290,6 +293,8 @@ html.preload.layout-desktop {
   margin-left: 0%;
   position: fixed;
   width: 100vw;
+  background-attachment: fixed; /* The key property to fix the image */
+  backdrop-filter: blur(var(--blur)) !important;
 }
 
 
@@ -304,6 +309,7 @@ html.preload.layout-desktop {
     background-color: #18181849;
     width: 100vw;
     left: 0;
+	background-attachment: fixed; /* The key property to fix the image */
   }
 
 
@@ -340,6 +346,7 @@ html.preload.layout-desktop {
   top: 0;
   height: 100vh;
   z-index: 0;
+  background-attachment: fixed; /* The key property to fix the image */
 }
 
 #reactRoot:not(:has(.skinHeader.semiTransparent)) > .backgroundContainer.withBackdrop::before {
@@ -353,9 +360,10 @@ html.preload.layout-desktop {
   background: none;
   background-color: #18181849;
   z-index: -1; 
-  
+  background-attachment: fixed; /* The key property to fix the image */
 }
 
+/* take a look later */
 #reactRoot:not(:has(.skinHeader.semiTransparent)) > .backdropContainer > .backdropImage {
   animation-name: parralax;
   animation-duration: 1ms; /* Firefox requires this to apply the animation */
@@ -707,75 +715,8 @@ h2 {
   width: 90vw;
 }
 
-.layout-mobile [dir=ltr] .infoWrapper {
-  padding-left: 0;
-}
 
-
-.layout-mobile .detailRibbon{
-    width: 100vw;
-    position: relative;
-    right: 5vw;
-}
-
-.layout-mobile .trackSelections {
-  position: relative;
-  right: 6vw;
-}
-
-.layout-mobile .overflowPortraitCard:not(.scrollSlider) {
-  flex: 0 0 calc((100% - 50px) / 3) !important;
-  width: calc((100% - 50px) / 3) !important;
-    
-  max-width: none !important; 
-  margin: 0 !important; 
-}
-
-.layout-mobile .itemsContainer:not(.scrollSlider){
-  display: flex !important;   
-  flex-wrap: wrap !important;
-  overflow-y: visible !important; 
-  gap: 10px; 
-  justify-content: flex-start; 
-}
-
-.layout-mobile .detailImageContainer .card {
-  display: none;
-}
-
-.layout-mobile :has(.backgroundContainer:not(.withBackdrop)) .detailImageContainer .card:has(.cardImageIcon.person) {
-  left: 35vw;
-  top: -24vh;
-  bottom: 3vh;
-  border-radius: 0;
-}
-
-
-
-/* ================================================================= */
-/* 						    Login Page								 */
-/* ================================================================= */
-/* Narrow the login form */
-#loginPage .readOnlyContent,
-#loginPage form {
-  max-width: 22em;
-}
-
-/* Hide "please login" text, margin is to prevent login form moving too far up */
-#loginPage h1 {
-  display: none;
-}
-#loginPage .padded-left.padded-right.padded-bottom-page {
-  margin-top: 50px;
-}
-
-/* Hide "manual" and "forgot" buttons */
-#loginPage .raised.cancel.block.btnManual.emby-button {
-  display: none;
-}
-#loginPage .raised.cancel.block.btnForgotPassword.emby-button {
-  display: none;
-}
+ 
 
 
 
@@ -1243,6 +1184,118 @@ h2 {
 }
 
 
+/* ================================================================= */
+/* 						    Desktop Background		 				 */
+/* ================================================================= */
+/*# indexPage, #moviesPage, #tvRecommendedPage, #collectionPage {
+  background: var(--Jellyfin-background);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  background-attachment: fixed;
+  z-index: 1;
+} */
+
+.layout-desktop .backgroundContainer {
+  background: var(--Jellyfin-background);
+  background-size: cover;
+  height: 100vh;
+  margin-left: 0%;
+  position: fixed;
+  width: 100vw;
+  background-attachment: fixed; /* The key property to fix the image */
+  backdrop-filter: blur(var(--blur)) !important;
+}
+
+
+
+/* ================================================================= */
+/* 						    Layout Mobile								 */
+/* ================================================================= */
+
+.layout-mobile [dir=ltr] .infoWrapper {
+  padding-left: 0;
+}
+
+
+.layout-mobile .detailRibbon{
+    width: 100vw;
+    position: relative;
+    right: 5vw;
+}
+
+.layout-mobile .trackSelections {
+  position: relative;
+  right: 6vw;
+}
+
+.layout-mobile .overflowPortraitCard:not(.scrollSlider) {
+  flex: 0 0 calc((100% - 50px) / 3) !important;
+  width: calc((100% - 50px) / 3) !important;
+    
+  max-width: none !important; 
+  margin: 0 !important; 
+}
+
+.layout-mobile .itemsContainer:not(.scrollSlider){
+  display: flex !important;   
+  flex-wrap: wrap !important;
+  overflow-y: visible !important; 
+  gap: 10px; 
+  justify-content: flex-start; 
+}
+
+.layout-mobile .detailImageContainer .card {
+  display: none;
+}
+
+.layout-mobile :has(.backgroundContainer:not(.withBackdrop)) .detailImageContainer .card:has(.cardImageIcon.person) {
+  left: 35vw;
+  top: -24vh;
+  bottom: 3vh;
+  border-radius: 0;
+}
+
+
+
+/* ================================================================= */
+/* 						    Login Page								 */
+/* ================================================================= */
+/* Narrow the login form */
+#loginPage .readOnlyContent,
+#loginPage form {
+  max-width: 22em;
+}
+
+/* Hide "please login" text, margin is to prevent login form moving too far up */
+#loginPage h1 {
+  display: none;
+}
+#loginPage .padded-left.padded-right.padded-bottom-page {
+  margin-top: 50px;
+}
+
+/* Hide "manual" and "forgot" buttons */
+#loginPage .raised.cancel.block.btnManual.emby-button {
+  display: none;
+}
+#loginPage .raised.cancel.block.btnForgotPassword.emby-button {
+  display: none;
+}
+
+#loginPage {
+  background: var(--Jellyfin-background-login);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  background-attachment: fixed; /* The key property to fix the image */
+}
+
+
 
 /* ================================================================= */
 /* 						    fonts					 				 */
@@ -1359,3 +1412,7 @@ h2 {
   src: url(https://fonts.gstatic.com/s/inter/v20/UcCo3FwrK3iLTcviYwY.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+
+
+
