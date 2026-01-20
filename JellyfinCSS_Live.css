@@ -20,7 +20,7 @@
   --secondary-background-transparent: rgba(0,0,0,0.6);
   --primary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 1.0);
   --secondary-accent-color: #00a4dc20;
-  --Jellyfin-background: url("https://raw.githubusercontent.com/Chloee001/JellyFinCSS/refs/heads/Master/BG1%20-%20Inverted.jpeg");
+  --Jellyfin-background: url("https://raw.githubusercontent.com/Chloee001/JellyFinCSS/refs/heads/Master/BG1%20-%20Inverted%20-%20Blured%20-%20Darkened.jpg");
   --Jellyfin-background-login: url("https://raw.githubusercontent.com/Chloee001/JellyFinCSS/refs/heads/Master/login.jpg");
 }
 
