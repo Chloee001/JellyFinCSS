@@ -1206,7 +1206,7 @@ h2 {
   position: fixed;
   width: 100vw;
   background-attachment: fixed; /* The key property to fix the image */
-  backdrop-filter: blur(var(--blur)) !important;
+  z-index: -5;
 }
 
 
