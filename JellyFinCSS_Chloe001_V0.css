@@ -1,0 +1,259 @@
+@import url("https://cdn.jsdelivr.net/gh/KBH-Reeper/GlassFin@latest/Theme/GlassFin-Theme-latest-stable.css");
+/*@import url("https://cdn.jsdelivr.net/gh/intro-skipper/intro-skipper-css@main/skip-button.min.css");*/
+
+
+/** * Minified by jsDelivr using clean-css v5.3.3. * Modified to seamlessly match the GlassFin Theme style rules. */ 
+:root{
+  --skip-hide-duration: 8s;
+  --skip-btn-transition-speed:0.2s;
+  --skip-btn-bottom:9em;
+  --skip-btn-right:2.5em;
+  
+  /* GlassFin specific adjustments */
+  --skip-btn-bg: rgba(255, 255, 255, 0.12); /* Semi-transparent frosted white */
+  --skip-btn-bg-hover: rgba(255, 255, 255, 0.95); /* Solid white on hover */
+  --skip-btn-border-color: rgba(255, 255, 255, 0.4); /* Subtle glass edge */
+  --skip-btn-text-color: #ffffff; /* Crisp white text */
+  --skip-btn-text-color-hover: #111827; /* Dark text on hover */
+  
+  /* Shared theme elements */
+  --skip-btn-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Glassmorphism drop shadow */
+  --skip-btn-progress-color: var(--accentColor, rgba(0, 164, 219, 0.4)); /* Match Jellyfin accent or GlassFin teal */
+  --skip-btn-progress-bg: rgba(255, 255, 255, 0.08)
+}
+
+.skip-button-container{bottom:var(--skip-btn-bottom);display:flex;justify-content:flex-end;padding-right:var(--skip-btn-right);transition:bottom .3s ease-out}body:has(.videoOsdBottom.hide) .skip-button-container,body:has(.videoOsdBottom.videoOsdBottom-hidden) .skip-button-container{--skip-btn-bottom:3em}body:has(.videoOsdBottom:not(.videoOsdBottom-hidden):not(.hide)) .skip-button-container{--skip-btn-bottom:9em}.skip-button{padding:.75em 2.125em .75em 1.75em;flex-direction:row-reverse;cursor:pointer;background-color:var(--skip-btn-bg);border:var(--borderWidthDouble,.12em) solid var(--skip-btn-border-color);border-radius:var(--largerRadius,1.25em);color:var(--skip-btn-text-color);font-weight:700;text-shadow:var(--skip-btn-shadow);box-shadow:var(--skip-btn-shadow),inset 0 .0625em 0 rgba(255,255,255,.1);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:background-color var(--skip-btn-transition-speed) ease-out,border-color var(--skip-btn-transition-speed) ease-out,color var(--skip-btn-transition-speed) ease-out,box-shadow var(--skip-btn-transition-speed) ease-out,opacity var(--skip-btn-transition-speed) ease-out,transform .1s ease-out}.skip-button>:last-child{margin-right:.5em}.skip-button:hover{background-color:var(--skip-btn-bg-hover)!important;color:var(--skip-btn-text-color-hover)!important;border-color:var(--skip-btn-bg-hover)!important;text-shadow:none!important;box-shadow:0 .25em .5em rgba(0,0,0,.25),0 0 0 .125em var(--activeColorAlpha,rgba(119,91,244,.3))}.skip-button:active{transform:scale(.97);box-shadow:0 .1em .2em rgba(0,0,0,.3)}.skip-button:focus-visible{outline:.125em solid var(--highlightOutlineColor,rgb(37,99,235));outline-offset:0.125em}.skip-button.skip-button-hidden{opacity:0;pointer-events:none;transform:translateY(.5em)}@keyframes skipButtonLoading{0%{background-position:100% 0}100%{background-position:0 0}}.skip-button:not(.skip-button-hidden):not(.no-transition){background:linear-gradient(to right,var(--skip-btn-progress-color) 0,var(--skip-btn-progress-color) 50%,var(--skip-btn-progress-bg) 50%,var(--skip-btn-progress-bg) 100%);background-size:200% 100%;animation:skipButtonLoading var(--skip-hide-duration) linear forwards;will-change:background-position;transform:translateZ(0);contain:layout paint}@media (prefers-reduced-motion:reduce){.skip-button{transition-duration:0s!important}.skip-button:not(.skip-button-hidden):not(.no-transition){animation:none;background-position:0 0}}.layout-mobile .skip-button-container{--skip-btn-bottom:5em;--skip-btn-right:1em}@media (max-width:50em){.skip-button-container{--skip-btn-bottom:5em;--skip-btn-right:1em}.skip-button{padding:.625em 1.5em .625em 1.25em;font-size:.9em}}
+
+
+
+/* Make the top navigation bar completely transparent */
+.skinHeader-withBackground {
+    background-color: rgba(0, 0, 0, 0) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Remove the thin line/border underneath the top navigation bar */
+.skinHeader-withBackground {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/*             Login             */
+
+/* 1. ALLOW movie/show backdrops to display normally */
+.backdropImage, 
+.backgroundContainer.withBackdrop {
+    display: block !important;
+}
+
+/* 2. Set the ultra-dark navy gradient as the global base/fallback background */
+.backgroundContainer {
+    background-color: #04050a !important; /* Extremely dark base */
+    background-image: 
+        radial-gradient(circle at 100% 100%, rgba(8, 14, 36, 0.9) 0%, rgba(0, 0, 0, 0) 65%),
+        radial-gradient(circle at 0% 100%, rgba(6, 10, 26, 0.4) 0%, rgba(0, 0, 0, 0) 40%) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+/* OPTION A: Use a static image URL */ 
+/*  background-image: url("https://your-image-url-here.jpg") !important;*/
+}
+
+/* 3. Keep the background container transparent when a movie backdrop is active */
+.backgroundContainer.withBackdrop {
+    background-image: none !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* 4. Ensure app layers blend properly over the backdrops */
+#appComponent {
+    background-color: transparent !important;
+}
+
+:root {
+    /* Skip button timing */
+    --skip-hide-duration: 8s;
+}
+
+/* test - Optimized */
+
+/* 1. Fully release overlapping layers so they don't block the background styles */
+.detailPagePrimaryContainer,
+.detailImageContainer,
+.detailPageSecondaryContainer,
+.detailPageContent,
+.mainDetailPageContainer {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+}
+
+/* 2. Target the master content wrapper canvas using a safe background blend layout */
+.itemDetailPage .detailPageWrapperContainer {
+    /* PURE GRADIENT OVERLAY: Transparent for the top 180px, then fades smoothly to dark */
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0) 0px, 
+        rgba(0, 0, 0, 0) 180px,          /* Leaves your logo and play button areas completely untouched */
+        rgba(4, 5, 10, 0.65) 280px,      /* The dark backing tint takes shape beneath the buttons */
+        rgba(4, 5, 10, 0.75) 100%) !important;
+    
+    /* Promotes the massive layout wrapper to its own composited GPU layer */
+    transform: translateZ(0);
+    will-change: transform;
+    
+    /* REMOVED ALL MASK-IMAGE FILTERS TO STOP EMBEDDED THUMBNAILS FROM VANISHING */
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+
+    /* Spreading layouts: stretches the bar edge-to-edge across your monitor screen */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 30px 0 0 0 !important;
+    padding: 30px 6% !important; 
+    box-sizing: border-box !important;
+}
+
+/* 3. SHIELD FOR THE PREVIEW IMAGE: Explicit target adjustment to prevent rendering glitches */
+.detailImageContainer,
+.detailImageContainer img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    mix-blend-mode: normal !important;
+    
+    /* Prevents the image from forcing a layout recalculation step when loading */
+    contain: layout paint;
+}
+
+
+/* Test2 - Optimized */
+
+/* Darken the left navigation drawer/sidebar menu */
+.navDrawer,
+.mainDrawer,
+.sidebar-open,
+div[data-role="sidebar"] {
+    background-color: rgba(4, 5, 10, 0.92) !important; /* Deep dark navy/black fallback */
+    
+    /* Promotes the sidebar to its own GPU layer to optimize the blur processing */
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+    
+    backdrop-filter: blur(10px) !important;            /* Slight clean defuse for the peek-through background */
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5) !important; /* Subtle shadow to separate it from the main view */
+}
+
+/* Optional: Subtle dark backing for the active/hovered sidebar items */
+.navDrawer .navDrawerListItem:hover,
+.sidebar .sidebarListItem:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+
+/* Test3 */
+
+/* Optimized Play Button Styles */
+.btnPlay, 
+.detailButton-primary,
+button[id^="play"] {
+    background-color: rgba(4, 5, 10, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    
+    /* Hardware acceleration and high-performance transitions */
+    will-change: transform;
+    transform: scale(1) translateZ(0) !important;
+    transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+/* High-performance hover effects */
+.btnPlay:hover,
+.detailButton-primary:hover,
+button[id^="play"]:hover {
+    background-color: rgba(4, 5, 10, 0.95) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    
+    /* Uses hardware acceleration instead of forcing layout repaints */
+    transform: scale(1.02) translateZ(0) !important;
+}
+
+
+/* Test 4 - Optimized */
+
+/* Darken and style the pop-up context menu */
+.actionSheet,
+.mainContextmenu,
+.dropdownMenu,
+.popupMenu {
+    background-color: rgba(4, 5, 10, 0.90) !important; /* Matches your exact dark theme color profile */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important; /* Subtle glass line border */
+    border-radius: 16px !important;                     /* Rounded corners matching your other containers */
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important; /* Soft deep shadow depth */
+    padding: 8px 0 !important;
+    
+    /* Promotes the popup to its own GPU composite layer to cache the heavy shadow math */
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Style the text and icons inside the menu */
+.actionSheet .listItem,
+.actionSheet .actionSheetMenuItem,
+.popupMenu .actionSheetMenuItem {
+    color: #ffffff !important;                          /* Crisp white text labels */
+    font-size: 0.95rem !important;
+    transition: background-color 0.15s ease !important;
+    
+    /* Isolates each item so hover animations don't force a full menu paint recalculation */
+    contain: paint;
+}
+
+/* Subtle dark backdrop highlighting when hovering over menu actions */
+.actionSheet .listItem:hover,
+.actionSheet .actionSheetMenuItem:hover,
+.popupMenu .actionSheetMenuItem:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important; /* Clean visual feedback layer */
+    color: #ffffff !important;
+}
+
+/* Test5 - Optimized */
+
+/* Update My Media library category buttons to match the dark theme */
+.section0 .cardContent,
+.section0 .cardBox,
+.section0 .emby-button,
+.section0 .card[data-type="CollectionFolder"] .cardContent {
+    background-color: rgba(4, 5, 10, 0.75) !important; /* Exact dark theme color profile */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important; /* Clean glass border line instead of bright blue */
+    border-radius: 12px !important;                     /* Rounded matching corners */
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;  /* Soft visual depth shadow underneath */
+    
+    /* Strict layout containment prevents card adjustments from rebuilding the grid layout */
+    contain: layout paint;
+    
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease !important;
+}
+
+/* Ensure the text and media icons inside stay crisp white */
+.section0 .cardText,
+.section0 .cardName,
+.section0 .material-icons {
+    color: #ffffff !important;
+    font-weight: 550 !important;
+}
+
+/* Elegant visual feedback when you hover your mouse over a category card */
+.section0 .card:hover .cardContent,
+.section0 .cardBox:hover,
+.section0 .emby-button:hover {
+    background-color: rgba(4, 5, 10, 0.95) !important; /* Solid dark highlight */
+    border-color: rgba(255, 255, 255, 0.3) !important;  /* Brightens the rim edge line slightly */
+    
+    /* Triggers GPU hardware acceleration on-demand *only* during active hover states */
+    transform: translateY(-2px) translateZ(0) !important; /* Gentle upward hover float effect */
+}
